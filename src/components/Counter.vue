@@ -14,7 +14,7 @@ import { mapGetters, mapActions, mapMutations } from 'vuex'
 import {
   INCREMENT_COUNTER,
   INCREMENT_ASYNC_COUNTER
-} from 'store/mutation-types'
+} from 'store/types'
 
 export default {
   computed: mapGetters({

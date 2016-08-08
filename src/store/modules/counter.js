@@ -1,7 +1,7 @@
 import {
   INCREMENT_COUNTER as INCREMENT,
   INCREMENT_ASYNC_COUNTER as INCREMENT_ASYNC
-} from '../mutation-types'
+} from '../types'
 
 const state = {
   count: 0
