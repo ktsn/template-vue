@@ -40,6 +40,7 @@
     "css-loader": "^0.23.1",
     "eslint": "^3.0.0",
     "eslint-plugin-html": "^1.5.2",
+    "extract-text-webpack-plugin": "^1.0.1",
     "glob": "^7.0.3",
     "json-loader": "^0.5.4",
     "onchange": "^2.5.0",
