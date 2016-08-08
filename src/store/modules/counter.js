@@ -11,15 +11,18 @@ const getters = {
   count: state => state.count
 }
 
-const actions = {
+export const actions = {
   [INCREMENT_ASYNC] ({ commit }, { amount = 1, interval = 1000 } = {}) {
-    setTimeout(() => {
-      commit(INCREMENT, { amount })
-    }, interval)
+    return new Promise(resolve => {
+      setTimeout(() => {
+        commit(INCREMENT, { amount })
+        resolve()
+      }, interval)
+    })
   }
 }
 
-const mutations = {
+export const mutations = {
   [INCREMENT] (state, { amount = 1 } = {}) {
     state.count += amount
   }
