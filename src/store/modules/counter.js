@@ -12,7 +12,7 @@ const getters = {
 }
 
 const actions = {
-  [INCREMENT_ASYNC] ({ commit }, { amount = 1, interval = 1000 }) {
+  [INCREMENT_ASYNC] ({ commit }, { amount = 1, interval = 1000 } = {}) {
     setTimeout(() => {
       commit(INCREMENT, { amount })
     }, interval)
@@ -20,7 +20,7 @@ const actions = {
 }
 
 const mutations = {
-  [INCREMENT] (state, { amount }) {
+  [INCREMENT] (state, { amount = 1 } = {}) {
     state.count += amount
   }
 }
