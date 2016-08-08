@@ -4,6 +4,17 @@ import modules from './modules'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   modules
 })
+
+if (module.hot) {
+  module.hot.accept(['./modules'], () => {
+    const newModules = require('./modules').default
+    store.hotUpdate({
+      modules: newModules
+    })
+  })
+}
+
+export default store
