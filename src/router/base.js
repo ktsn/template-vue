@@ -1,5 +1,5 @@
-import Home from '../components/Home'
-import Counter from '../components/Counter'
+import Home from 'components/Home'
+import Counter from 'components/Counter'
 
 export default [
   { path: '/', component: Home },
