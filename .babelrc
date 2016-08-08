@@ -4,6 +4,9 @@
   "env": {
     "development": {
       "presets": ["power-assert"]
+    },
+    "production": {
+      "plugins": ["babel-plugin-unassert"]
     }
   }
 }
