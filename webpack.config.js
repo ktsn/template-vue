@@ -1,7 +1,7 @@
 /* eslint-env node */
 const path = require('path')
 const webpack = require('webpack')
-const ExtractPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -26,14 +26,14 @@ const config = {
   },
   vue: {
     loaders: {
-      css: ExtractPlugin.extract('css')
+      css: ExtractTextPlugin.extract('css')
     }
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new ExtractPlugin('main.css')
+    new ExtractTextPlugin('main.css')
   ],
   devServer: {
     contentBase: 'dist',
