@@ -21,7 +21,7 @@
     "release": "run-s test:ci build:prod minify",
     "lint": "eslint --fix \"src/**/*.+(js|vue)\" && eslint --fix \"test/**/*.js\"",
     "minify": "uglifyjs dist/main.js -c warnings=false -m -o dist/main.js",
-    "serve": "webpack-dev-server --inline --hot --config webpack.config.js",
+    "dev": "webpack-dev-server --inline --hot --config webpack.config.js",
     "testem": "testem",
     "testem:ci": "testem ci --launch Firefox",
     "test": "run-p watch:test testem",
