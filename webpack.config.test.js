@@ -13,4 +13,6 @@ config.output = {
   filename: 'test.js'
 }
 
+config.plugins.pop()
+
 module.exports = config
