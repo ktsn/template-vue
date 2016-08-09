@@ -2,6 +2,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -33,7 +34,10 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new ExtractTextPlugin('main.css')
+    new ExtractTextPlugin('main.css'),
+    new HtmlWebpackPlugin({
+      template: '../index.html'
+    })
   ],
   devServer: {
     contentBase: 'dist',
