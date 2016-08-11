@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
   context: path.resolve(__dirname, 'src'),
-  entry: './main.js',
+  entry: ['./main.css', './main.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js'
@@ -21,6 +21,7 @@ const config = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+      { test: /\.css$/, loader: 'style!css' },
       { test: /\.vue$/, loader: 'vue' },
       { test: /\.json$/, loader: 'json' }
     ]
@@ -42,6 +43,8 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
   config.devtool = null
+
+  config.module.loaders[1].loader = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
     new webpack.optimize.UglifyJsPlugin({
