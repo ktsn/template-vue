@@ -25,28 +25,30 @@ const config = {
       { test: /\.json$/, loader: 'json' }
     ]
   },
-  vue: {
-    loaders: {
-      css: ExtractTextPlugin.extract('css')
-    }
-  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new ExtractTextPlugin('main.css'),
     new HtmlWebpackPlugin({
       template: '../index.html'
     })
   ],
+  devtool: 'source-map',
   devServer: {
     contentBase: 'dist',
     historyApiFallback: true
   }
 }
 
-if (process.env.NODE_ENV !== 'production') {
-  config.devtool = 'source-map'
+if (process.env.NODE_ENV === 'production') {
+  config.devtool = null
+
+  config.plugins.push(new ExtractTextPlugin('main.css'))
+  config.vue = {
+    loaders: {
+      css: ExtractTextPlugin.extract('css')
+    }
+  }
 }
 
 module.exports = config
