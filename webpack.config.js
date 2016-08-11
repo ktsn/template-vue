@@ -3,6 +3,13 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+
+const postcss = [
+  autoprefixer({
+    browsers: ['> 1%', 'last 2 versions', 'ie >= 9']
+  })
+]
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -19,6 +26,9 @@ const config = {
     extensions: ['', '.js', '.vue']
   },
   module: {
+    preLoaders: [
+      { test: /\.css$/, loader: 'postcss' }
+    ],
     loaders: [
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
       { test: /\.css$/, loader: 'style!css' },
@@ -34,6 +44,11 @@ const config = {
       template: '../index.html'
     })
   ],
+  postcss,
+  vue: {
+    loaders: {},
+    postcss
+  },
   devtool: 'source-map',
   devServer: {
     contentBase: 'dist',
@@ -45,6 +60,7 @@ if (process.env.NODE_ENV === 'production') {
   config.devtool = null
 
   config.module.loaders[1].loader = ExtractTextPlugin.extract('css')
+  config.vue.loaders.css = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
     new webpack.optimize.UglifyJsPlugin({
@@ -54,12 +70,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new ExtractTextPlugin('main.css')
   ])
-
-  config.vue = {
-    loaders: {
-      css: ExtractTextPlugin.extract('css')
-    }
-  }
 }
 
 module.exports = config
