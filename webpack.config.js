@@ -43,7 +43,15 @@ const config = {
 if (process.env.NODE_ENV === 'production') {
   config.devtool = null
 
-  config.plugins.push(new ExtractTextPlugin('main.css'))
+  config.plugins = config.plugins.concat([
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new ExtractTextPlugin('main.css')
+  ])
+
   config.vue = {
     loaders: {
       css: ExtractTextPlugin.extract('css')
