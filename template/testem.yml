@@ -1,4 +1,6 @@
+{{#if true}}
 ---
   framework: mocha
   src_files:
     - .tmp/test.js
+{{/if}}

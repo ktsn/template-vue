@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <p class="count">
-      Count <output class="count-value">{{ count }}</output>
+      Count <output class="count-value">\{{ count }}</output>
     </p>
     <div class="controls">
       <button class="button button-default" type="button" @click="increment()">Increment</button>
