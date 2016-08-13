@@ -1,6 +1,6 @@
 <template>
-  <article>
-    <h1>{{ title }}</h1>
+  <article class="wrapper">
+    <h1 class="title">{{ title }}</h1>
   </article>
 </template>
 
@@ -13,3 +13,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.wrapper {
+  padding: 50px 0 40px;
+}
+
+.title {
+  color: #219858;
+  font-size: 4.2rem;
+  font-weight: normal;
+}
+</style>
