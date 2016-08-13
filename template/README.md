@@ -17,7 +17,3 @@ $ npm run test:ci
 # release build
 $ npm run release
 ```
-
-## License
-
-MIT
