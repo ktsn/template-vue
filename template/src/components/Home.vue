@@ -1,6 +1,6 @@
 <template>
   <article class="wrapper">
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="title">\{{ title }}</h1>
   </article>
 </template>
 

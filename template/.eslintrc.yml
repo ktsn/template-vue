@@ -1,3 +1,4 @@
+{{#if true}}
 ---
   extends: eslint:recommended
   parser: babel-eslint
@@ -25,3 +26,4 @@
     quotes: [1, single]
     semi: [1, never]
     strict: [2, global]
+{{/if}}

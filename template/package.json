@@ -1,16 +1,17 @@
 {
-  "name": "template-vue",
+  "name": "{{ name }}",
   "version": "1.0.0",
-  "author": "katashin",
+  "author": "{{ author }}",
+  "description": "{{ description }}",
   "private": true,
-  "description": "A project template for a Vue.js application",
-  "license": "MIT",
-  "homepage": "https://github.com/ktsn/template-vue",
-  "bugs": "https://github.com/ktsn/template-vue/issues",
+  {{#if repository}}
+  "homepage": "{{ repository }}",
+  "bugs": "{{ repository }}/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ktsn/template-vue.git"
+    "url": "{{ repository }}.git"
   },
+  {{/if}}
   "scripts": {
     "clean": "rm -rf .tmp dist",
     "build": "webpack --config webpack.config.js",
