@@ -31,7 +31,6 @@ const config = {
     ],
     loaders: [
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.css$/, loader: 'style!css' },
       { test: /\.vue$/, loader: 'vue' },
       { test: /\.json$/, loader: 'json' }
     ]
@@ -49,7 +48,6 @@ const config = {
     loaders: {},
     postcss
   },
-  devtool: 'source-map',
   devServer: {
     contentBase: 'dist',
     historyApiFallback: true
@@ -57,9 +55,7 @@ const config = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  config.devtool = null
-
-  config.module.loaders[1].loader = ExtractTextPlugin.extract('css')
+  config.module.loaders.push(ExtractTextPlugin.extract('css'))
   config.vue.loaders.css = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
@@ -78,6 +74,10 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     new DashboardPlugin(dashboard.setData)
   )
+
+  config.devtool = 'source-map'
+
+  config.module.loaders.push({ test: /\.css$/, loader: 'style!css' })
 }
 
 module.exports = config
