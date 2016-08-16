@@ -52,6 +52,7 @@
     "testem": "^1.6.0",
     "vue-loader": "^9.3.2",
     "webpack": "^1.13.1",
+    "webpack-dashboard": "0.0.1",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
