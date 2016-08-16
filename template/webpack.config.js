@@ -1,61 +1,27 @@
 /* eslint-env node */
 const path = require('path')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const autoprefixer = require('autoprefixer')
 
-const postcss = [
-  autoprefixer({
-    browsers: ['> 1%', 'last 2 versions', 'ie >= 9']
-  })
-]
+const config = require('./webpack.config.base')
 
-const config = {
-  context: path.resolve(__dirname, 'src'),
-  entry: ['./main.css', './main.js'],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
-  },
-  resolve: {
-    root: [
-      path.resolve(__dirname, 'src')
-    ],
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.vue']
-  },
-  module: {
-    preLoaders: [
-      { test: /\.css$/, loader: 'postcss' }
-    ],
-    loaders: [
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.vue$/, loader: 'vue' },
-      { test: /\.json$/, loader: 'json' }
-    ]
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    new HtmlWebpackPlugin({
-      template: '../index.html'
-    })
-  ],
-  postcss,
-  vue: {
-    loaders: {},
-    postcss
-  },
-  devServer: {
-    contentBase: 'dist',
-    historyApiFallback: true
-  }
+config.context = path.resolve(__dirname, 'src')
+config.entry = ['./main.css', './main.js']
+config.output = {
+  path: path.resolve(__dirname, 'dist'),
+  filename: 'main.js'
 }
 
+config.plugins.push(
+  new HtmlWebpackPlugin({
+    template: '../index.html'
+  })
+)
+
 if (process.env.NODE_ENV === 'production') {
-  config.module.loaders.push(ExtractTextPlugin.extract('css'))
+  const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+  config.module.loaders.push({ test: /\.css$/, loader: ExtractTextPlugin.extract('css') })
   config.vue.loaders.css = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
