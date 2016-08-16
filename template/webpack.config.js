@@ -1,65 +1,27 @@
 /* eslint-env node */
 const path = require('path')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const autoprefixer = require('autoprefixer')
 
-const postcss = [
-  autoprefixer({
-    browsers: ['> 1%', 'last 2 versions', 'ie >= 9']
-  })
-]
+const config = require('./webpack.config.base')
 
-const config = {
-  context: path.resolve(__dirname, 'src'),
-  entry: ['./main.css', './main.js'],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
-  },
-  resolve: {
-    root: [
-      path.resolve(__dirname, 'src')
-    ],
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.vue']
-  },
-  module: {
-    preLoaders: [
-      { test: /\.css$/, loader: 'postcss' }
-    ],
-    loaders: [
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.vue$/, loader: 'vue' },
-      { test: /\.json$/, loader: 'json' }
-    ]
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    new HtmlWebpackPlugin({
-      template: '../index.html'
-    })
-  ],
-  postcss,
-  vue: {
-    loaders: {},
-    postcss
-  },
-  devtool: 'source-map',
-  devServer: {
-    contentBase: 'dist',
-    historyApiFallback: true
-  }
+config.context = path.resolve(__dirname, 'src')
+config.entry = ['./main.css', './main.js']
+config.output = {
+  path: path.resolve(__dirname, 'dist'),
+  filename: 'main.js'
 }
 
-if (process.env.NODE_ENV === 'production') {
-  config.devtool = null
+config.plugins.push(
+  new HtmlWebpackPlugin({
+    template: '../index.html'
+  })
+)
 
-  config.module.loaders[1].loader = ExtractTextPlugin.extract('css')
+if (process.env.NODE_ENV === 'production') {
+  const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+  config.module.loaders.push({ test: /\.css$/, loader: ExtractTextPlugin.extract('css') })
   config.vue.loaders.css = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
@@ -70,6 +32,18 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new ExtractTextPlugin('main.css')
   ])
+} else {
+  const Dashboard = require('webpack-dashboard')
+  const DashboardPlugin = require('webpack-dashboard/plugin')
+  const dashboard = new Dashboard()
+
+  config.plugins.push(
+    new DashboardPlugin(dashboard.setData)
+  )
+
+  config.devtool = 'source-map'
+
+  config.module.loaders.push({ test: /\.css$/, loader: 'style!css' })
 }
 
 module.exports = config
