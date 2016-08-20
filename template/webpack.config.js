@@ -21,8 +21,8 @@ config.plugins.push(
 if (process.env.NODE_ENV === 'production') {
   const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-  config.module.loaders.push({ test: /\.css$/, loader: ExtractTextPlugin.extract('css') })
-  config.vue.loaders.css = ExtractTextPlugin.extract('css')
+  config.module.loaders.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: ExtractTextPlugin.extract('css') })
+  {{#if_eq style "SCSS"}}config.vue.loaders.scss = {{/if_eq}}config.vue.loaders.css = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
     new webpack.optimize.UglifyJsPlugin({
@@ -43,7 +43,10 @@ if (process.env.NODE_ENV === 'production') {
 
   config.devtool = 'source-map'
 
-  config.module.loaders.push({ test: /\.css$/, loader: 'style!css' })
+  {{#if_eq style "SCSS"}}
+  config.vue.loaders.scss = 'style!css!sass'
+  {{/if_eq}}
+  config.module.loaders.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: 'style!css' })
 }
 
 module.exports = config

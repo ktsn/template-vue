@@ -19,6 +19,16 @@
       "type": "string",
       "required": false,
       "message": "Github repository"
+    },
+    "template": {
+      "type": "list",
+      "message": "Template preprocessor",
+      "choices": ["HTML", "Pug"]
+    },
+    "style": {
+      "type": "list",
+      "message": "Style preprocessor",
+      "choices": ["CSS", "SCSS"]
     }
   }
 }
