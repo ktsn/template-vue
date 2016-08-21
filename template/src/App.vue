@@ -1,4 +1,4 @@
-<template{{#if_eq template "Pug"}} lang="pug"{{/if_eq}}>
+<template{{ lang template }}>
 {{#if_eq template "HTML"}}
   <div class="app">
     <router-view></router-view>
@@ -26,7 +26,7 @@
 {{/if_eq}}
 </template>
 
-<style{{#if_eq style "SCSS"}} lang="scss"{{/if_eq}} scoped>
+<style{{ lang style }} scoped>
 .app {
   position: absolute;
   left: 50%;

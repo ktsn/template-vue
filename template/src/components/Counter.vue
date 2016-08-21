@@ -1,4 +1,4 @@
-<template{{#if_eq template "Pug"}} lang="pug"{{/if_eq}}>
+<template{{ lang template }}>
 {{#if_eq template "HTML"}}
   <div class="wrapper">
     <p class="count">
@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style{{#if_eq style "SCSS"}} lang="scss"{{/if_eq}} scoped>
+<style{{ lang style }} scoped>
 .wrapper {
   padding: 30px 0;
 }

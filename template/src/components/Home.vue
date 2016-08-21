@@ -1,4 +1,4 @@
-<template{{#if_eq template "Pug"}} lang="pug"{{/if_eq}}>
+<template{{ lang template }}>
 {{#if_eq template "HTML"}}
   <article class="wrapper">
     <h1 class="title">\{{ title }}</h1>
@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style{{#if_eq style "SCSS"}} lang="scss"{{/if_eq}} scoped>
+<style{{ lang style }} scoped>
 .wrapper {
   padding: 50px 0 40px;
 }
