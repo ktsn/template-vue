@@ -1,7 +1,13 @@
-<template>
+<template{{ lang template }}>
+{{#if_eq template "HTML"}}
   <article class="wrapper">
     <h1 class="title">\{{ title }}</h1>
   </article>
+{{/if_eq}}
+{{#if_eq template "Pug"}}
+article.wrapper
+  h1.title \{{ title }}
+{{/if_eq}}
 </template>
 
 <script>
@@ -14,7 +20,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style{{ lang style }} scoped>
 .wrapper {
   padding: 50px 0 40px;
 }

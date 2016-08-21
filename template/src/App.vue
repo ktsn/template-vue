@@ -1,7 +1,7 @@
-<template>
+<template{{ lang template }}>
+{{#if_eq template "HTML"}}
   <div class="app">
     <router-view></router-view>
-
     <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item">
@@ -13,9 +13,20 @@
       </ul>
     </nav>
   </div>
+{{/if_eq}}
+{{#if_eq template "Pug"}}
+.app
+  router-view
+  nav.nav
+    ul.nav-list
+      li.nav-item
+        router-link.nav-link(to="/") Home
+      li.nav-item
+        router-link.nav-link(to="/counter") Counter
+{{/if_eq}}
 </template>
 
-<style scoped>
+<style{{ lang style }} scoped>
 .app {
   position: absolute;
   left: 50%;
