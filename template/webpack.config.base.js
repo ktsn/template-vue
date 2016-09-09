@@ -19,9 +19,10 @@ module.exports = {
   },
   module: {
     preLoaders: [
-      { test: /\.css$/, loader: 'postcss' }{{#if_eq style "SCSS"}},
-      { test: /\.scss$/, loader: 'postcss!sass' }
+      {{#if_eq style "SCSS"}}
+      { test: /\.scss$/, loader: 'postcss!sass' },
       {{/if_eq}}
+      { test: /\.css$/, loader: 'postcss' }
     ],
     loaders: [
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
