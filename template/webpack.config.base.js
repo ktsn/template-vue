@@ -13,10 +13,10 @@ const postcss = [
 
 module.exports = {
   resolve: {
-    root: [
-      path.resolve(__dirname, 'src')
+    modules: [
+      path.resolve(__dirname, 'src'),
+      'node_modules'
     ],
-    modulesDirectories: ['node_modules'],
     extensions: ['', '.js', '.vue']
   },
   module: {

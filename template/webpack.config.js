@@ -27,6 +27,9 @@ if (process.env.NODE_ENV === 'production') {
   config.vue.loaders.css = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
@@ -35,12 +38,10 @@ if (process.env.NODE_ENV === 'production') {
     new ExtractTextPlugin('main.css')
   ])
 } else {
-  const Dashboard = require('webpack-dashboard')
   const DashboardPlugin = require('webpack-dashboard/plugin')
-  const dashboard = new Dashboard()
 
   config.plugins.push(
-    new DashboardPlugin(dashboard.setData)
+    new DashboardPlugin()
   )
 
   config.devtool = 'source-map'
