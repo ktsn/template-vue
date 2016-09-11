@@ -46,6 +46,7 @@
     "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
     "eslint": "^3.0.0",
+    "eslint-loader": "^1.5.0",
     {{#flow}}
     "eslint-plugin-flowtype": "^2.16.1",
     {{/flow}}
