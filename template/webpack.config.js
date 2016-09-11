@@ -27,6 +27,9 @@ if (process.env.NODE_ENV === 'production') {
   config.vue.loaders.css = ExtractTextPlugin.extract('css')
 
   config.plugins = config.plugins.concat([
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
