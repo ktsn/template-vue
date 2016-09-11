@@ -1,7 +1,9 @@
-/* eslint-env node */
 const path = require('path')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
+{{#flow}}
+const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin')
+{{/flow}}
 
 const postcss = [
   autoprefixer({
@@ -31,6 +33,11 @@ module.exports = {
     ]
   },
   plugins: [
+    {{#flow}}
+    new FlowStatusWebpackPlugin({
+      failOnError: true
+    }),
+    {{/flow}}
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
