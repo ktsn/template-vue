@@ -29,6 +29,10 @@ module.exports = {
       type: 'list',
       message: 'Style preprocessor',
       choices: ['CSS', 'SCSS']
+    },
+    flow: {
+      type: 'confirm',
+      message: 'Use Flow for static type checking?'
     }
   },
   helpers: {
@@ -36,5 +40,8 @@ module.exports = {
       if (str === 'HTML' || str === 'CSS') return ''
       return ` lang="${str.toLowerCase()}"`
     }
+  },
+  filters: {
+    '.flowconfig': 'flow'
   }
 }

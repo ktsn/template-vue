@@ -1,0 +1,16 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/.*
+<PROJECT_ROOT>/\.tmp/.*
+<PROJECT_ROOT>/dist/.*
+
+[include]
+
+[libs]
+flow
+
+[options]
+module.file_ext=.js
+module.file_ext=.vue
+module.name_mapper='^components/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
+module.name_mapper='^router/\(.*\)$' -> '<PROJECT_ROOT>/src/router/\1'
+module.name_mapper='^store/\(.*\)$' -> '<PROJECT_ROOT>/src/store/\1'
