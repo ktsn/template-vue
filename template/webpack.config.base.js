@@ -11,24 +11,29 @@ const postcss = [
   })
 ]
 
-module.exports = {
+exports.options = {
+  postcss,
+  vue: {
+    postcss
+  }
+}
+
+exports.config = {
   resolve: {
     modules: [
       path.resolve(__dirname, 'src'),
       'node_modules'
     ],
-    extensions: ['', '.js', '.vue']
+    extensions: ['.js', '.json', '.vue']
   },
   module: {
-    preLoaders: [
-      { test: /\.vue$/, loader: 'eslint', exclude: /node_modules/ },
-      { test: /\.js$/, loader: 'eslint', exclude: /node_modules/ },
+    rules: [
+      { enforce: 'pre', test: /\.vue$/, loader: 'eslint', exclude: /node_modules/ },
+      { enforce: 'pre', test: /\.js$/, loader: 'eslint', exclude: /node_modules/ },
       {{#if_eq style "SCSS"}}
-      { test: /\.scss$/, loader: 'postcss!sass' },
+      { enforce: 'pre', test: /\.scss$/, loader: 'postcss!sass' },
       {{/if_eq}}
-      { test: /\.css$/, loader: 'postcss' }
-    ],
-    loaders: [
+      { enforce: 'pre', test: /\.css$/, loader: 'postcss' },
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
       { test: /\.vue$/, loader: 'vue' },
       { test: /\.json$/, loader: 'json' }
@@ -44,11 +49,6 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
-  postcss,
-  vue: {
-    loaders: {},
-    postcss
-  },
   devServer: {
     contentBase: 'dist',
     historyApiFallback: true
