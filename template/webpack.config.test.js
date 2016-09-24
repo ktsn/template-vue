@@ -1,7 +1,9 @@
+const webpack = require('webpack')
 const path = require('path')
 const glob = require('glob')
 
-const config = require('./webpack.config.base')
+const options = require('./webpack.config.base').options
+const config = require('./webpack.config.base').config
 
 config.devtool = 'source-map'
 
@@ -10,5 +12,11 @@ config.output = {
   path: path.resolve(__dirname, '.tmp'),
   filename: 'test.js'
 }
+
+config.plugins.push(
+  new webpack.LoaderOptionsPlugin({
+    options
+  })
+)
 
 module.exports = config
