@@ -21,12 +21,12 @@ config.plugins.push(
 if (process.env.NODE_ENV === 'production') {
   const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-  config.module.rules.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: ExtractTextPlugin.extract('css') })
+  config.module.rules.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: ExtractTextPlugin.extract('css-loader') })
   options.vue.loaders = {
     {{#if_eq style "SCSS"}}
-    scss: ExtractTextPlugin.extract('css!sass'),
+    scss: ExtractTextPlugin.extract('css-loader!sass-loader'),
     {{/if_eq}}
-    css: ExtractTextPlugin.extract('css')
+    css: ExtractTextPlugin.extract('css-loader')
   }
 
   config.plugins = config.plugins.concat([
@@ -50,12 +50,12 @@ if (process.env.NODE_ENV === 'production') {
 
   config.devtool = 'source-map'
 
-  config.module.rules.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: 'style!css' })
+  config.module.rules.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: 'style-loader!css-loader' })
   options.vue.loaders = {
     {{#if_eq style "SCSS"}}
-    scss: 'style!css!sass',
+    scss: 'style-loader!css-loader!sass-loader',
     {{/if_eq}}
-    css: 'style!css'
+    css: 'style-loader!css-loader'
   }
 
   config.plugins = config.plugins.concat([

@@ -28,15 +28,15 @@ exports.config = {
   },
   module: {
     rules: [
-      { enforce: 'pre', test: /\.vue$/, loader: 'eslint', exclude: /node_modules/ },
-      { enforce: 'pre', test: /\.js$/, loader: 'eslint', exclude: /node_modules/ },
+      { enforce: 'pre', test: /\.vue$/, loader: 'eslint-loader', exclude: /node_modules/ },
+      { enforce: 'pre', test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ },
       {{#if_eq style "SCSS"}}
-      { enforce: 'pre', test: /\.scss$/, loader: 'postcss!sass' },
+      { enforce: 'pre', test: /\.scss$/, loader: 'postcss-loader!sass-loader' },
       {{/if_eq}}
-      { enforce: 'pre', test: /\.css$/, loader: 'postcss' },
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
-      { test: /\.vue$/, loader: 'vue' },
-      { test: /\.json$/, loader: 'json' }
+      { enforce: 'pre', test: /\.css$/, loader: 'postcss-loader' },
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.vue$/, loader: 'vue-loader' },
+      { test: /\.json$/, loader: 'json-loader' }
     ]
   },
   plugins: [
