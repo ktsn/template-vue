@@ -5,7 +5,7 @@ article.wrapper
 
 <script>
 export default {
-  data: function () {
+  data () {
     return {
       title: 'Hello Vue.js!'
     }
