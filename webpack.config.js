@@ -21,11 +21,9 @@ config.plugins.push(
 if (process.env.NODE_ENV === 'production') {
   const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-  config.module.rules.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: ExtractTextPlugin.extract('css-loader') })
+  config.module.rules.push({ test: /\.s?css$/, loader: ExtractTextPlugin.extract('css-loader') })
   options.vue.loaders = {
-    {{#if_eq style "SCSS"}}
     scss: ExtractTextPlugin.extract('css-loader!sass-loader'),
-    {{/if_eq}}
     css: ExtractTextPlugin.extract('css-loader')
   }
 
@@ -50,11 +48,9 @@ if (process.env.NODE_ENV === 'production') {
 
   config.devtool = 'source-map'
 
-  config.module.rules.push({ test: /\.{{#if_eq style "SCSS"}}s?{{/if_eq}}css$/, loader: 'style-loader!css-loader' })
+  config.module.rules.push({ test: /\.s?css$/, loader: 'style-loader!css-loader' })
   options.vue.loaders = {
-    {{#if_eq style "SCSS"}}
     scss: 'style-loader!css-loader!sass-loader',
-    {{/if_eq}}
     css: 'style-loader!css-loader'
   }
 

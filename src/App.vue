@@ -1,20 +1,4 @@
-<template{{ lang template }}>
-{{#if_eq template "HTML"}}
-  <div class="app">
-    <router-view></router-view>
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/counter">Counter</router-link>
-        </li>
-      </ul>
-    </nav>
-  </div>
-{{/if_eq}}
-{{#if_eq template "Pug"}}
+<template lang="pug">
 .app
   router-view
   nav.nav
@@ -23,10 +7,9 @@
         router-link.nav-link(to="/") Home
       li.nav-item
         router-link.nav-link(to="/counter") Counter
-{{/if_eq}}
 </template>
 
-<style{{ lang style }} scoped>
+<style lang="scss" scoped>
 .app {
   position: absolute;
   left: 50%;

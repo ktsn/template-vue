@@ -1,23 +1,10 @@
-<template{{ lang template }}>
-{{#if_eq template "HTML"}}
-  <div class="wrapper">
-    <p class="count">
-      Count <output class="count-value">\{{ count }}</output>
-    </p>
-    <div class="controls">
-      <button class="button button-default" type="button" @click="increment()">Increment</button>
-      <button class="button button-async" type="button" @click="incrementAsync()">Increment Async</button>
-    </div>
-  </div>
-{{/if_eq}}
-{{#if_eq template "Pug"}}
+<template lang="pug">
 .wrapper
   p.count
-    | Count <output class="count-value">\{{ count }}</output>
+    | Count <output class="count-value">{{ count }}</output>
   .controls
     button.button.button-default(type="button" @click="increment()") Increment
     button.button.button-async(type="button" @click="incrementAsync()") Increment Async
-{{/if_eq}}
 </template>
 
 <script>
@@ -43,7 +30,7 @@ export default {
 }
 </script>
 
-<style{{ lang style }} scoped>
+<style lang="scss" scoped>
 .wrapper {
   padding: 30px 0;
 }

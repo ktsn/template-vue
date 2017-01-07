@@ -1,9 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
-{{#flow}}
 const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin')
-{{/flow}}
 
 const postcss = [
   autoprefixer({
@@ -30,9 +28,7 @@ exports.config = {
     rules: [
       { enforce: 'pre', test: /\.vue$/, loader: 'eslint-loader', exclude: /node_modules/ },
       { enforce: 'pre', test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ },
-      {{#if_eq style "SCSS"}}
       { enforce: 'pre', test: /\.scss$/, loader: 'postcss-loader!sass-loader' },
-      {{/if_eq}}
       { enforce: 'pre', test: /\.css$/, loader: 'postcss-loader' },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.vue$/, loader: 'vue-loader' },
@@ -40,11 +36,9 @@ exports.config = {
     ]
   },
   plugins: [
-    {{#flow}}
     new FlowStatusWebpackPlugin({
       failOnError: true
     }),
-    {{/flow}}
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
