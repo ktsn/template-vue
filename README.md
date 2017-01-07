@@ -8,15 +8,21 @@ A project template for Vue.js applications
 - Testing using Testem, Mocha, power-assert and Sinon.JS
 - Hot module replacement for Vue components and Vuex store
 
-## Installation
+## Commands
 
 ```sh
-$ npm i -g vue-cli
-$ vue init ktsn/template-vue my-project
-$ cd my-project
-$ npm i
-```
+# dev server
+$ npm run dev
 
+# test in development
+$ npm run test
+
+# test for CI
+$ npm run test:ci
+
+# release build
+$ npm run release
+```
 ## License
 
 MIT

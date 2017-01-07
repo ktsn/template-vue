@@ -1,17 +1,15 @@
 {
-  "name": "{{ name }}",
+  "name": "template-vue",
   "version": "1.0.0",
-  "author": "{{ author }}",
-  "description": "{{ description }}",
+  "author": "katashin",
+  "description": "A project template for a Vue.js application",
   "private": true,
-  {{#if repository}}
-  "homepage": "{{ repository }}",
-  "bugs": "{{ repository }}/issues",
+  "homepage": "https://github.com/ktsn/template-vue",
+  "bugs": "https://github.com/ktsn/template-vue/issues",
   "repository": {
     "type": "git",
-    "url": "{{ repository }}.git"
+    "url": "https://github.com/ktsn/template-vue.git"
   },
-  {{/if}}
   "scripts": {
     "clean": "rm -rf .tmp dist",
     "build": "webpack --config webpack.config.js",
@@ -20,25 +18,21 @@
     "watch": "webpack -w --config webpack.config.js",
     "watch:test": "webpack -w --config webpack.config.test.js",
     "release": "run-s test:ci clean build:prod",
-    {{#flow}}
     "flow": "flow check",
-    {{/flow}}
     "lint": "eslint --fix \"src/**/*.+(js|vue)\" && eslint --fix \"test/**/*.js\"",
     "dev": "webpack-dashboard -- webpack-dev-server --inline --hot --no-info --config webpack.config.js",
     "testem": "testem",
     "testem:ci": "testem ci --launch Firefox",
     "test": "run-p watch:test testem",
-    "test:ci": "run-s lint {{#flow}}flow {{/flow}}build:test testem:ci"
+    "test:ci": "run-s lint flow build:test testem:ci"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.7.6",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
-    {{#flow}}
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-flow-strip-types": "^6.14.0",
-    {{/flow}}
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-unassert": "^2.1.1",
     "babel-preset-es2015": "^6.6.0",
@@ -47,30 +41,20 @@
     "css-loader": "^0.23.1",
     "eslint": "^3.0.0",
     "eslint-loader": "^1.5.0",
-    {{#flow}}
     "eslint-plugin-flowtype": "^2.16.1",
-    {{/flow}}
     "eslint-plugin-html": "^1.5.2",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
-    {{#flow}}
     "flow-bin": "^0.32.0",
     "flow-status-webpack-plugin": "^0.1.6",
-    {{/flow}}
     "glob": "^7.0.3",
     "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
-    {{#if_eq style "SCSS"}}
     "node-sass": "^3.8.0",
-    {{/if_eq}}
     "npm-run-all": "^2.3.0",
     "postcss-loader": "^0.9.1",
     "power-assert": "^1.3.1",
-    {{#if_eq template "Pug"}}
     "pug": "^2.0.0-beta5",
-    {{/if_eq}}
-    {{#if_eq style "SCSS"}}
     "sass-loader": "^4.0.0",
-    {{/if_eq}}
     "sinon": "^2.0.0-pre.2",
     "style-loader": "^0.13.1",
     "testem": "^1.6.0",
