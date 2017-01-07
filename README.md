@@ -14,11 +14,11 @@ A project template for Vue.js applications
 # dev server
 $ npm run dev
 
-# test in development
+# test
 $ npm run test
 
-# test for CI
-$ npm run test:ci
+# test for development
+$ npm run test:dev
 
 # release build
 $ npm run release

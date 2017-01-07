@@ -17,7 +17,7 @@
     "build:test": "webpack --config webpack.config.test.js",
     "watch": "webpack -w --config webpack.config.js",
     "watch:test": "webpack -w --config webpack.config.test.js",
-    "release": "run-s test:ci clean build:prod",
+    "release": "run-s test clean build:prod",
     "flow": "flow check",
     "lint": "eslint --ext js,vue src test",
     "lint:fix": "npm run lint -- --fix",
