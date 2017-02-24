@@ -48,7 +48,7 @@
     "eslint-plugin-flowtype": "^2.16.1",
     "eslint-plugin-vue": "^2.0.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
-    "flow-bin": "^0.39.0",
+    "flow-bin": "^0.40.0",
     "flow-status-webpack-plugin": "^0.1.6",
     "glob": "^7.0.3",
     "html-webpack-plugin": "^2.22.0",
