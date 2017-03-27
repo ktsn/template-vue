@@ -69,7 +69,7 @@
     "webpack-dev-server": "^2.2.0-rc.0"
   },
   "dependencies": {
-    "k-css": "^1.0.0",
+    "k-css": "^2.0.0",
     "vue": "^2.1.8",
     "vue-router": "^2.1.1",
     "vuex": "^2.1.1",
