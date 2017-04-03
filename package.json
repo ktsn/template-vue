@@ -47,7 +47,7 @@
     "eslint-loader": "^1.5.0",
     "eslint-plugin-flowtype": "^2.16.1",
     "eslint-plugin-vue": "^2.0.1",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "extract-text-webpack-plugin": "^2.1.0",
     "flow-bin": "^0.42.0",
     "flow-status-webpack-plugin": "^0.1.6",
     "glob": "^7.0.3",
@@ -63,9 +63,9 @@
     "testem": "^1.6.0",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.1.8",
-    "webpack": "^2.2.0-rc.3",
+    "webpack": "^2.3.0",
     "webpack-dashboard": "^0.3.0",
-    "webpack-dev-server": "^2.2.0-rc.0"
+    "webpack-dev-server": "^2.4.0"
   },
   "dependencies": {
     "k-css": "^2.0.0",
