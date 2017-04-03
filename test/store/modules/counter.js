@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import sinon from 'sinon'
+import td from 'testdouble'
 import { deepClone } from '../../helpers'
 
 import { actions, mutations } from 'store/modules/counter'
@@ -28,11 +28,11 @@ describe('counter mutations', () => {
 
 describe('counter actions', () => {
   it(INCREMENT_ASYNC, () => {
-    const commit = sinon.spy()
+    const commit = td.function()
     const payload = { amount: 5, interval: 0 }
     return actions[INCREMENT_ASYNC]({ commit }, payload)
       .then(() => {
-        assert(commit.calledWith(INCREMENT, { amount: payload.amount }))
+        td.verify(commit(INCREMENT, { amount: payload.amount }))
       })
   })
 })
