@@ -52,7 +52,6 @@
     "flow-status-webpack-plugin": "^0.1.6",
     "glob": "^7.0.3",
     "html-webpack-plugin": "^2.22.0",
-    "json-loader": "^0.5.4",
     "node-sass": "^4.1.1",
     "npm-run-all": "^4.0.0",
     "postcss-loader": "^1.2.1",

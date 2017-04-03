@@ -31,8 +31,7 @@ exports.config = {
       { enforce: 'pre', test: /\.scss$/, loader: 'postcss-loader!sass-loader' },
       { enforce: 'pre', test: /\.css$/, loader: 'postcss-loader' },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.vue$/, loader: 'vue-loader' },
-      { test: /\.json$/, loader: 'json-loader' }
+      { test: /\.vue$/, loader: 'vue-loader' }
     ]
   },
   plugins: [
