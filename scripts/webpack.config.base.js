@@ -1,18 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
 const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin')
 
-const postcss = [
-  autoprefixer({
-    browsers: ['> 1%', 'last 2 versions', 'ie >= 9']
-  })
-]
-
-exports.options = {
-  postcss,
-  vue: {
-    postcss
+const vueOptions = exports.vueOptions = {
+  esModule: true,
+  loaders: {
+    scss: 'style-loader!css-loader'
+  },
+  preLoaders: {
+    scss: 'sass-loader'
   }
 }
 
@@ -28,10 +24,10 @@ exports.config = {
     rules: [
       { enforce: 'pre', test: /\.vue$/, loader: 'eslint-loader', exclude: /node_modules/ },
       { enforce: 'pre', test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ },
-      { enforce: 'pre', test: /\.scss$/, loader: 'postcss-loader!sass-loader' },
+      { enforce: 'pre', test: /\.scss$/, loaders: ['postcss-loader', 'sass-loader'] },
       { enforce: 'pre', test: /\.css$/, loader: 'postcss-loader' },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.vue$/, loader: 'vue-loader' }
+      { test: /\.vue$/, loader: 'vue-loader', options: vueOptions }
     ]
   },
   plugins: [

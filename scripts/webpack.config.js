@@ -2,8 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const options = require('./webpack.config.base').options
-const config = require('./webpack.config.base').config
+const { config, vueOptions } = require('./webpack.config.base')
 
 config.context = path.resolve(__dirname, '../src')
 config.entry = ['./main.css', './main.js']
@@ -21,16 +20,17 @@ config.plugins.push(
 if (process.env.NODE_ENV === 'production') {
   const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-  config.module.rules.push({ test: /\.s?css$/, loader: ExtractTextPlugin.extract('css-loader') })
-  options.vue.loaders = {
-    scss: ExtractTextPlugin.extract('css-loader!sass-loader'),
-    css: ExtractTextPlugin.extract('css-loader')
-  }
+  const extractLoader = ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: 'css-loader'
+  })
+
+  config.module.rules.push({ test: /\.s?css$/, loader: extractLoader })
+  vueOptions.loaders.css = vueOptions.loaders.scss = extractLoader
 
   config.plugins = config.plugins.concat([
     new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      options
+      minimize: true
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -49,16 +49,6 @@ if (process.env.NODE_ENV === 'production') {
   config.devtool = 'source-map'
 
   config.module.rules.push({ test: /\.s?css$/, loader: 'style-loader!css-loader' })
-  options.vue.loaders = {
-    scss: 'style-loader!css-loader!sass-loader',
-    css: 'style-loader!css-loader'
-  }
-
-  config.plugins = config.plugins.concat([
-    new webpack.LoaderOptionsPlugin({
-      options
-    })
-  ])
 }
 
 module.exports = config
