@@ -19,10 +19,10 @@ exports.options = {
 exports.config = {
   resolve: {
     modules: [
-      path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, '../src'),
       'node_modules'
     ],
-    extensions: ['.js', '.json', '.vue']
+    extensions: ['.js', '.vue']
   },
   module: {
     rules: [

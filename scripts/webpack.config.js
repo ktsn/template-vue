@@ -5,10 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const options = require('./webpack.config.base').options
 const config = require('./webpack.config.base').config
 
-config.context = path.resolve(__dirname, 'src')
+config.context = path.resolve(__dirname, '../src')
 config.entry = ['./main.css', './main.js']
 config.output = {
-  path: path.resolve(__dirname, 'dist'),
+  path: path.resolve(__dirname, '../dist'),
   filename: 'main.js'
 }
 

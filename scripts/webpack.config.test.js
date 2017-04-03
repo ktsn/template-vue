@@ -9,7 +9,7 @@ config.devtool = 'source-map'
 
 config.entry = ['es6-promise/auto'].concat(glob.sync('./test/**/*.js'))
 config.output = {
-  path: path.resolve(__dirname, '.tmp'),
+  path: path.resolve(__dirname, '../.tmp'),
   filename: 'test.js'
 }
 
