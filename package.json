@@ -63,7 +63,7 @@
     "vue-loader": "^12.0.0",
     "vue-template-compiler": "^2.1.8",
     "webpack": "^2.3.0",
-    "webpack-dashboard": "^0.3.0",
+    "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.0"
   },
   "dependencies": {
