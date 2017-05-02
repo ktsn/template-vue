@@ -1,5 +1,7 @@
 # template-vue
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ktsn/template-vue.svg)](https://greenkeeper.io/)
+
 A project template for Vue.js applications
 
 ## Features
