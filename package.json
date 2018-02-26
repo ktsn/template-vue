@@ -58,7 +58,7 @@
     "pug": "^2.0.0-beta5",
     "sass-loader": "^6.0.0",
     "style-loader": "^0.20.0",
-    "testdouble": "^3.0.0",
+    "testdouble": "^3.5.2",
     "testem": "^2.0.0",
     "vue-loader": "^14.0.0",
     "vue-template-compiler": "^2.1.8",
